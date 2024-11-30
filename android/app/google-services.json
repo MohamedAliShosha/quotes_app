@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "622220498616",
+    "project_id": "quotes-app-b86b8",
+    "storage_bucket": "quotes-app-b86b8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622220498616:android:0555a3b09654598a97864d",
+        "android_client_info": {
+          "package_name": "com.example.quotes_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXUFYj64DJz_TVJmeNnrm730Otjmsu6MM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
