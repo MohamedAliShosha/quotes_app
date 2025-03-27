@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quotes_app/models/quotes_model.dart';
+import 'package:quotes_app/models/quotes_model_api.dart';
 import 'package:quotes_app/services/quote_service.dart';
 
 part 'quotes_state.dart';

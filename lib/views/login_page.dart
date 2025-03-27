@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:quotes_app/constants.dart';
 import 'package:quotes_app/helper/show_snackBar.dart';
-import 'package:quotes_app/screens/quotes_page.dart';
-import 'package:quotes_app/screens/register_page.dart';
+import 'package:quotes_app/views/home_view.dart';
+import 'package:quotes_app/views/quotes_view.dart';
+import 'package:quotes_app/views/register_page.dart';
 import 'package:quotes_app/widgets/custom_button.dart';
-import 'package:quotes_app/widgets/custom_text_field.dart';
+import 'package:quotes_app/widgets/custom_text_form_field_email_password.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -57,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(
                   height: 20,
                 ),
-                CustomTextFormField(
+                CustomTextFormFieldEmailPassword(
                   labelText: 'Enter your email',
                   onChanged: (data) {
                     email = data;
@@ -67,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(
                   height: 20,
                 ),
-                CustomTextFormField(
+                CustomTextFormFieldEmailPassword(
                   labelText: 'Enter your password',
                   obscuredText: true,
                   onChanged: (data) {
@@ -80,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, QuotesPage.id);
+                    Navigator.pushNamed(context, QuotesView.id);
                   },
                   child: CustomButton(
                     onTap: () async {
@@ -89,15 +90,19 @@ class _LoginPageState extends State<LoginPage> {
                         setState(() {});
                         try {
                           await loginUser();
-                          Navigator.pushNamed(context, QuotesPage.id,
+                          // ignore: use_build_context_synchronously
+                          Navigator.pushNamed(context, HomeView.id,
                               arguments:
                                   email); // Arguments are data passed to the next page
                         } on FirebaseAuthException catch (e) {
                           // ScaffoldMessenger => used to display a message that express the registeration result fail or success
                           if (e.code == 'user-not-found') {
                             showSnackBar(
-                                context, 'No user found for that email.');
+                                // ignore: use_build_context_synchronously
+                                context,
+                                'No user found for that email.');
                           } else if (e.code == '-wrong-password') {
+                            // ignore: use_build_context_synchronously
                             showSnackBar(context,
                                 'wrong password provided for that user.');
                           }

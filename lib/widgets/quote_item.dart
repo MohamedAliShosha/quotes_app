@@ -12,7 +12,7 @@ class QuoteItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Spacer(),
+          // Removed Spacer widgets and added appropriate SizedBox
           Image.asset(
             'assets/quote.png',
             height: 40,
@@ -21,7 +21,6 @@ class QuoteItem extends StatelessWidget {
           const SizedBox(
             height: 65,
           ),
-          const Spacer(),
           const SizedBox(
             width: double.infinity,
           ),

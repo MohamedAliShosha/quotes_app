@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 
 import 'package:quotes_app/widgets/intro_screen_custom_body.dart';
 
-class IntroPage extends StatefulWidget {
-  const IntroPage({super.key});
+class IntroView extends StatefulWidget {
+  const IntroView({super.key});
 
   static String id = 'IntroPage';
 
   @override
-  State<IntroPage> createState() => _IntroPageState();
+  State<IntroView> createState() => _IntroViewState();
 }
 
-class _IntroPageState extends State<IntroPage> {
+class _IntroViewState extends State<IntroView> {
   bool _isVisible = false;
 
   @override

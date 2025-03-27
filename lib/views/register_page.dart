@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:quotes_app/constants.dart';
 import 'package:quotes_app/helper/show_snackBar.dart';
-import 'package:quotes_app/screens/quotes_page.dart';
+import 'package:quotes_app/views/quotes_view.dart';
 import 'package:quotes_app/widgets/custom_button.dart';
-import 'package:quotes_app/widgets/custom_text_field.dart';
+import 'package:quotes_app/widgets/custom_text_form_field_email_password.dart';
 
 // ignore: must_be_immutable
 class RegisterPage extends StatefulWidget {
@@ -64,7 +64,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(
                   height: 20,
                 ),
-                CustomTextFormField(
+                CustomTextFormFieldEmailPassword(
                   labelText: 'Enter your email',
                   onChanged: (data) {
                     email = data;
@@ -74,7 +74,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(
                   height: 20,
                 ),
-                CustomTextFormField(
+                CustomTextFormFieldEmailPassword(
                   labelText: 'Enter your password',
                   onChanged: (data) {
                     password = data;
@@ -86,7 +86,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, QuotesPage.id);
+                    Navigator.pushNamed(context, QuotesView.id);
                   },
                   child: CustomButton(
                     onTap: () async {
@@ -96,7 +96,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         try {
                           await registerUser();
                           // ignore: use_build_context_synchronously
-                          Navigator.pushNamed(context, QuotesPage.id);
+                          Navigator.pushNamed(context, QuotesView.id);
                         } on FirebaseAuthException catch (e) {
                           // ScaffoldMessenger => used to display a message that express the registeration result fail or success
                           if (e.code == 'weak-password') {

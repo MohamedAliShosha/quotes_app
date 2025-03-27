@@ -34,7 +34,10 @@ class IntroScreenCustomBody extends StatelessWidget {
             duration: const Duration(seconds: 2),
             child: const Text(
               'Get',
-              style: TextStyle(height: .5, fontSize: 50, fontFamily: 'Lato'),
+              style: TextStyle(
+                height: .5,
+                fontSize: 50,
+              ),
             ),
           ),
           AnimatedOpacity(
@@ -46,7 +49,6 @@ class IntroScreenCustomBody extends StatelessWidget {
               style: TextStyle(
                 fontSize: 50, // responsive font size
                 fontWeight: FontWeight.bold,
-                fontFamily: 'Lato',
               ),
             ),
           ),

@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:quotes_app/models/quotes_model.dart';
+import 'package:quotes_app/models/quotes_model_api.dart';
 
 class QuotesService {
   final Dio dio;

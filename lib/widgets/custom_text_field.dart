@@ -1,51 +1,49 @@
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
-class CustomTextFormField extends StatelessWidget {
-  CustomTextFormField(
+class CustomTextFormField1 extends StatelessWidget {
+  const CustomTextFormField1(
       {super.key,
-      this.onChanged,
-      this.hintText,
-      this.obscuredText = false,
-      required this.labelText});
+      required this.hintText,
+      this.maxLines = 1,
+      this.onSaved,
+      this.onChanged});
 
-  final String labelText;
-  Function(String)? onChanged;
-  String? hintText;
-  bool? obscuredText; // I gave  it a default value of false
-
+  final String hintText;
+  final int maxLines;
+  final void Function(String?)? onSaved;
+  final void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 10, right: 10),
-      child: TextFormField(
-        cursorColor: Colors.black,
-        obscureText: obscuredText!,
-        validator: (data) {
-          if (data!.isEmpty) {
-            return 'this field is required';
-          }
-        },
-        onChanged: onChanged,
-        decoration: InputDecoration(
-          labelText: labelText,
-          labelStyle: const TextStyle(fontSize: 16, color: Colors.grey),
-          hintText: hintText,
-          hintStyle: const TextStyle(
-            color: Colors.black,
-          ),
-          enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Colors.black,
-            ),
-          ),
-          focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Colors.black,
-            ),
-          ),
-        ),
+    return TextFormField(
+      onChanged: onChanged,
+      onSaved: onSaved,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'this field is required';
+        } else {
+          return null;
+        }
+      },
+      cursorColor: Colors.black,
+      maxLines: maxLines,
+      decoration: InputDecoration(
+        hintText: hintText,
+        border: buildBorder(),
+        enabledBorder: buildBorder(Colors
+            .black), // for unfocused => The user is not interacting with the TextField.
+        focusedBorder: buildBorder(Colors
+            .black), // for focused => The user is interacting with the TextField.
       ),
     );
+  }
+
+  OutlineInputBorder buildBorder([color]) {
+    return OutlineInputBorder(
+        borderRadius: const BorderRadius.all(
+          Radius.circular(8),
+        ),
+        borderSide: BorderSide(
+          color: color ?? Colors.white,
+        ));
   }
 }

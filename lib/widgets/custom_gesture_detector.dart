@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quotes_app/screens/login_page.dart';
+import 'package:quotes_app/views/login_page.dart';
 
 class CustomGestureDetecor extends StatelessWidget {
   const CustomGestureDetecor({
