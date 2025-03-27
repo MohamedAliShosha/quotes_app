@@ -1,5 +1,5 @@
 # quotes_app
-
+A simple Flutter application that displays inspiring and motivational quotes. Powered by a curated quotes collection or an API, the app offers a user-friendly experience to uplift your day!
 ## ✨ Features 
 - 🌟 View each quote with author 
 
