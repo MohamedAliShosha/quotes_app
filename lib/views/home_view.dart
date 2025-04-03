@@ -1,9 +1,28 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:quotes_app/views/quotes_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
   static String id = 'HomePage';
+  static FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.instance;
+  static FirebaseAnalyticsObserver observer =
+      FirebaseAnalyticsObserver(analytics: firebaseAnalytics);
+
+  // Function to log event when button is pressed
+  void logExploreQuotesEvent() {
+    // A function to log an event when the "Explore Quotes" button is pressed
+    firebaseAnalytics.logEvent(
+      name: "explore_quotes_clicked",
+      parameters: {
+        "screen": "home_view",
+        "action": "button_pressed",
+        "button_name": "Explore Quotes",
+        "timestamp":
+            DateTime.now().toIso8601String() // Log the current timestamp
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,20 +33,18 @@ class HomeView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Add an image or illustration at the top
             Expanded(
               flex: 2,
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Image.asset(
-                  'assets/quote.png', // Replace with your asset path
+                  'assets/quote.png',
                   fit: BoxFit.contain,
                   width: 200,
                   height: 200,
                 ),
               ),
             ),
-            // Add a welcome message
             const Text(
               'Discover and Add Your Favorite Quotes!',
               textAlign: TextAlign.center,
@@ -38,7 +55,6 @@ class HomeView extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            // Add a description or motivational text
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 32.0),
               child: Text(
@@ -51,9 +67,9 @@ class HomeView extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 40),
-            // Add a button to navigate to the Quotes page
             ElevatedButton(
               onPressed: () {
+                logExploreQuotesEvent(); // Log event when button is pressed
                 Navigator.pushNamed(context, QuotesView.id);
               },
               style: ElevatedButton.styleFrom(
@@ -74,11 +90,9 @@ class HomeView extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            // Add some spacing at the bottom
             Expanded(
               flex: 1,
-              child:
-                  Container(), // Empty container to add spacing at the bottom
+              child: Container(),
             ),
           ],
         ),
